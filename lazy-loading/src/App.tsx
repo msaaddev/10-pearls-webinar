@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState, lazy, Suspense } from 'react';
+
 import './App.css';
 
+// simple import
+import Note from './components/Note';
+
+// lazy loading
+// const Note = lazy(() => import('./components/Note'));
+
 function App() {
+	const [render, setRender] = useState<boolean>(false);
+
 	return (
 		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.tsx</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header>
+			<div style={{ marginTop: '200px', marginBottom: '50px' }}>
+				<button onClick={() => setRender(!render)}>Click Me!</button>
+			</div>
+			{/* simple */}
+			{render && <Note />}
+			{/* lazy loading */}
+			{/* {render && (
+				<Suspense fallback={<div>Loading...</div>}>
+					<Note />
+				</Suspense>
+			)} */}
 		</div>
 	);
 }
