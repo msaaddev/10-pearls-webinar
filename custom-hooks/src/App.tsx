@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
+import { useFetch } from './hooks';
 import './App.css';
 
 function App() {
+	const [apiURL, setApiURL] = useState<string>('');
+	const { data, loading, setApi } = useFetch(
+		'https://jsonplaceholder.typicode.com/todos/1'
+	);
+
 	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.tsx</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
+		<div className="container">
+			<form>
+				<input
+					type="text"
+					value={apiURL}
+					onChange={e => setApiURL(e.target.value)}
+					placeholder="Enter API URL"
+				/>
+				<button
+					type="submit"
+					onClick={e => {
+						e.preventDefault();
+						setApi(apiURL);
+					}}
 				>
-					Learn React
-				</a>
-			</header>
+					Make request
+				</button>
+			</form>
+			{loading ? (
+				<p>Loading...</p>
+			) : (
+				<pre>{JSON.stringify(data, null, 4)}</pre>
+			)}
 		</div>
 	);
 }
