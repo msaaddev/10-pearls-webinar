@@ -5,7 +5,7 @@ function App() {
 	return (
 		<div className="App">
 			<Guide author="Saad Irfan" />
-			<Blog platform="10 Pearls University"/>
+			<Blog platform="10 Pearls University" />
 		</div>
 	);
 }
