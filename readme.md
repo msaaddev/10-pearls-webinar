@@ -1,6 +1,6 @@
 ## Topics
 
-The following topics are discussed on the webinar.
+The following topics will be discussed on the webinar.
 
 - [Custom Hooks](https://github.com/msaaddev/10-pearls-webinar/tree/main/custom-hooks)
 - [HoC](https://github.com/msaaddev/10-pearls-webinar/tree/main/hoc)
